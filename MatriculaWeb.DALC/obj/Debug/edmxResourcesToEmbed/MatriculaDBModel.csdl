@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ALUMNO">
+    <Key>
+      <PropertyRef Name="ID_ALUMNO" />
+    </Key>
+    <Property Name="ID_ALUMNO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NRO_DOC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDO_PATERNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDO_MATERNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CURSO">
+    <Key>
+      <PropertyRef Name="ID_CURSO" />
+    </Key>
+    <Property Name="ID_CURSO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CREDITOS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SECCION">
+    <Key>
+      <PropertyRef Name="ID_SECCION" />
+    </Key>
+    <Property Name="ID_SECCION" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRE_SECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VACANTES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_CURSO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ID_SECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VACANTES1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MATRICULA">
+    <Key>
+      <PropertyRef Name="ID_MATRICULA" />
+    </Key>
+    <Property Name="ID_MATRICULA" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_ALUMNO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO_MATRICULA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_MATRICULA" Type="DateTime" />
+    <Property Name="FECHA_ANULCION" Type="DateTime" />
+    <Property Name="ID_SECCION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ID_CURSO" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityContainer Name="MatriculaDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" />
+    <EntitySet Name="CURSO" EntityType="Self.CURSO" />
+    <EntitySet Name="SECCION" EntityType="Self.SECCION" />
+    <EntitySet Name="VACANTES" EntityType="Self.VACANTES" />
+    <EntitySet Name="MATRICULA" EntityType="Self.MATRICULA" />
+  </EntityContainer>
+</Schema>

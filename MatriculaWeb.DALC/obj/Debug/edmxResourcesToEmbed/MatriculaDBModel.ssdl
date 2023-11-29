@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ALUMNO">
+    <Key>
+      <PropertyRef Name="ID_ALUMNO" />
+    </Key>
+    <Property Name="ID_ALUMNO" Type="varchar2" MaxLength="15" Nullable="false" />
+    <Property Name="NRO_DOC" Type="varchar2" MaxLength="15" />
+    <Property Name="NOMBRES" Type="varchar2" MaxLength="100" />
+    <Property Name="APELLIDO_PATERNO" Type="varchar2" MaxLength="100" />
+    <Property Name="APELLIDO_MATERNO" Type="varchar2" MaxLength="100" />
+    <Property Name="ESTADO" Type="varchar2" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="CURSO">
+    <Key>
+      <PropertyRef Name="ID_CURSO" />
+    </Key>
+    <Property Name="ID_CURSO" Type="varchar2" MaxLength="5" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="CREDITOS" Type="varchar2" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ECALERO.MATRICULA' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="MATRICULA">
+    <Key>
+      <PropertyRef Name="ID_MATRICULA" />
+    </Key>
+    <Property Name="ID_MATRICULA" Type="varchar2" MaxLength="5" Nullable="false" />
+    <Property Name="ID_ALUMNO" Type="varchar2" MaxLength="5" />
+    <Property Name="TIPO_MATRICULA" Type="varchar2" MaxLength="15" />
+    <Property Name="FECHA_MATRICULA" Type="date" />
+    <Property Name="FECHA_ANULCION" Type="date" />
+    <Property Name="ID_SECCION" Type="varchar2" MaxLength="20" />
+    <Property Name="ID_CURSO" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="SECCION">
+    <Key>
+      <PropertyRef Name="ID_SECCION" />
+    </Key>
+    <Property Name="ID_SECCION" Type="varchar2" MaxLength="5" Nullable="false" />
+    <Property Name="NOMBRE_SECCION" Type="varchar2" MaxLength="50" />
+    <Property Name="ESTADO" Type="varchar2" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="VACANTES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_CURSO" Type="varchar2" MaxLength="5" />
+    <Property Name="ID_SECCION" Type="varchar2" MaxLength="50" />
+    <Property Name="ID" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="VACANTES" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" Schema="ECALERO" store:Type="Tables" />
+    <EntitySet Name="CURSO" EntityType="Self.CURSO" Schema="ECALERO" store:Type="Tables" />
+    <EntitySet Name="SECCION" EntityType="Self.SECCION" Schema="ECALERO" store:Type="Tables" />
+    <EntitySet Name="VACANTES" EntityType="Self.VACANTES" Schema="ECALERO" store:Type="Tables" />
+    <EntitySet Name="MATRICULA" EntityType="Self.MATRICULA" store:Type="Tables" store:Schema="ECALERO">
+      <DefiningQuery>SELECT 
+"MATRICULA"."ID_MATRICULA" AS "ID_MATRICULA", 
+"MATRICULA"."ID_ALUMNO" AS "ID_ALUMNO", 
+"MATRICULA"."TIPO_MATRICULA" AS "TIPO_MATRICULA", 
+"MATRICULA"."FECHA_MATRICULA" AS "FECHA_MATRICULA", 
+"MATRICULA"."FECHA_ANULCION" AS "FECHA_ANULCION", 
+"MATRICULA"."ID_SECCION" AS "ID_SECCION", 
+"MATRICULA"."ID_CURSO" AS "ID_CURSO"
+FROM "ECALERO"."MATRICULA" "MATRICULA"</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

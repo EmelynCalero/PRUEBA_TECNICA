@@ -1,0 +1,102 @@
+﻿@using MatriculaWeb.BLL.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>REPORTE DE MATRICULAS</h2>
+@{ List<Matricula> matriculas = (List<Matricula>)ViewBag.matriculas;}
+<p>
+
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID MATRICULA
+        </th>
+        <th>
+            CODIGO ALUMNO
+        </th>
+
+        <th>
+            NOMBRES
+        </th>
+        <th>
+            APELLIDOS
+        </th>
+        <th>
+            ID CURSO
+        </th>
+        <th>
+            DESCRIPCION DEL CURSO
+        </th>
+        <th>
+            CREDITOS
+        </th>
+        <th>
+            NOMBRE SECCION
+        </th>
+        <th>
+            TIPO MATRICULA
+        </th>
+        <th>
+            FECHA MATRICULA
+        </th>
+        <th>
+            FECHA ANULACION
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var matricula in matriculas)
+    {
+<tr>
+    <td>
+        @matricula.IDMATRICULA
+    </td>
+    <td>
+        @matricula.IDALUMNO
+    </td>
+    <td>
+        @matricula.IDCURSO
+    </td>
+    <td>
+        @matricula.ALUMNO.NRODOC
+    </td>
+    <td>
+        @matricula.ALUMNO.NOMBRES
+    </td>
+    <td>
+        @matricula.ALUMNO.PATERNO          @matricula.ALUMNO.MATERNO
+    </td>
+    <td>
+        @matricula.IDCURSO
+    </td>
+    <td>
+        @matricula.CURSO.DESCRIPCION
+    </td>
+    <td>
+        @matricula.CURSO.CREDITOS
+    </td>
+    <td>
+        @matricula.SECCION.DESCRIPCION
+    </td>
+    <td>
+        @matricula.TIPOMATRICULA
+    </td>
+    <td>
+        @matricula.FECHA_REGISTRO
+    </td>
+    <td>
+        @matricula.FECHA_ANULACION
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>
+    }
+
+</table>

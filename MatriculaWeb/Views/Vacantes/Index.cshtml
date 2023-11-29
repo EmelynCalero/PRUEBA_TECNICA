@@ -1,0 +1,52 @@
+﻿@using MatriculaWeb.BLL.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>VACANTES DISPONIBLES</h2>
+
+@{ List<Vacante> vacantes = (List<Vacante>)ViewBag.vacantes;}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           CURSO
+        </th>
+        <th>
+            CREDITOS
+        </th>
+        <th>
+            SECCION
+        </th>
+        <th>
+            VACANTES
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var vacante in vacantes) {
+<tr>
+    <td>
+        @vacante.CURSO.DESCRIPCION
+    </td>
+    <td>
+        @vacante.CURSO.CREDITOS
+    </td>
+    <td>
+        @vacante.SECCION.DESCRIPCION
+    </td>
+    <td>
+        @vacante.CURSO.VACANTESDIS
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="MatriculaDBEntities">
+    <EntitySetMapping Name="ALUMNO">
+      <EntityTypeMapping TypeName="Model.ALUMNO">
+        <MappingFragment StoreEntitySet="ALUMNO">
+          <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+          <ScalarProperty Name="NRO_DOC" ColumnName="NRO_DOC" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APELLIDO_PATERNO" ColumnName="APELLIDO_PATERNO" />
+          <ScalarProperty Name="APELLIDO_MATERNO" ColumnName="APELLIDO_MATERNO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CURSO">
+      <EntityTypeMapping TypeName="Model.CURSO">
+        <MappingFragment StoreEntitySet="CURSO">
+          <ScalarProperty Name="ID_CURSO" ColumnName="ID_CURSO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CREDITOS" ColumnName="CREDITOS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SECCION">
+      <EntityTypeMapping TypeName="Model.SECCION">
+        <MappingFragment StoreEntitySet="SECCION">
+          <ScalarProperty Name="ID_SECCION" ColumnName="ID_SECCION" />
+          <ScalarProperty Name="NOMBRE_SECCION" ColumnName="NOMBRE_SECCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VACANTES">
+      <EntityTypeMapping TypeName="Model.VACANTES">
+        <MappingFragment StoreEntitySet="VACANTES">
+          <ScalarProperty Name="ID_CURSO" ColumnName="ID_CURSO" />
+          <ScalarProperty Name="ID_SECCION" ColumnName="ID_SECCION" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VACANTES1" ColumnName="VACANTES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATRICULA">
+      <EntityTypeMapping TypeName="Model.MATRICULA">
+        <MappingFragment StoreEntitySet="MATRICULA">
+          <ScalarProperty Name="ID_MATRICULA" ColumnName="ID_MATRICULA" />
+          <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+          <ScalarProperty Name="TIPO_MATRICULA" ColumnName="TIPO_MATRICULA" />
+          <ScalarProperty Name="FECHA_MATRICULA" ColumnName="FECHA_MATRICULA" />
+          <ScalarProperty Name="FECHA_ANULCION" ColumnName="FECHA_ANULCION" />
+          <ScalarProperty Name="ID_SECCION" ColumnName="ID_SECCION" />
+          <ScalarProperty Name="ID_CURSO" ColumnName="ID_CURSO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

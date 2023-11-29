@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>MATRICULA ONLINE</h1>
+    <p class="lead">Bienvenidos al sistema de Matriculas.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Registrar Matricula</h2>
+        <p>
+           Ingrese a esta opciòn si desea registrar su matricula
+        </p>
+        <p class="btn btn-default">@Html.ActionLink("Registrar Matricula", "Create", "Registro")</p>
+    </div>
+    </div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Modificar Matricula</h2>
+        <p>
+            Ingrese a esta opciòn si desea registrar su matricula
+        </p>
+        <p class="btn btn-default">@Html.ActionLink("Modificar Matricula", "Index", "Vacantes")</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Reporte de Matriculas</h2>
+        <p>
+            Ingrese a esta opciòn si desea registrar su matricula
+        </p>
+        <p class="btn btn-default">@Html.ActionLink("Reporte de Matricula", "Index", "Matricula")</p>
+    </div>
+</div>

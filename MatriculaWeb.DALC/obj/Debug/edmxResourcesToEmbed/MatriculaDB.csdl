@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ALUMNO">
+    <Key>
+      <PropertyRef Name="IDALUMNO" />
+    </Key>
+    <Property Name="IDALUMNO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NRODOC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="APEPATERNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="APEMATERNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="MATRICULA" Relationship="Self.SYS_C008349" FromRole="ALUMNO" ToRole="MATRICULA" />
+  </EntityType>
+  <EntityType Name="CURSO">
+    <Key>
+      <PropertyRef Name="IDCURSO" />
+    </Key>
+    <Property Name="IDCURSO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CREDITOS" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="VACANTES_DISPONIBLES" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="VACANTES_USADAS" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="IDSECCION" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SECCION" Relationship="Self.SYS_C008344" FromRole="CURSO" ToRole="SECCION" />
+    <NavigationProperty Name="VACANTES" Relationship="Self.SYS_C008346" FromRole="CURSO" ToRole="VACANTES" />
+    <NavigationProperty Name="MATRICULA" Relationship="Self.SYS_C008350" FromRole="CURSO" ToRole="MATRICULA" />
+  </EntityType>
+  <EntityType Name="MATRICULA">
+    <Key>
+      <PropertyRef Name="IDMATRICULA" />
+    </Key>
+    <Property Name="IDMATRICULA" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDALUMNO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="IDCURSO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="IDSECCION" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_MATRICULA" Type="DateTime" />
+    <Property Name="FECHA_ANULACION" Type="DateTime" />
+    <Property Name="TIPO_MATRICULA" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ALUMNO" Relationship="Self.SYS_C008349" FromRole="MATRICULA" ToRole="ALUMNO" />
+    <NavigationProperty Name="CURSO" Relationship="Self.SYS_C008350" FromRole="MATRICULA" ToRole="CURSO" />
+    <NavigationProperty Name="SECCION" Relationship="Self.SYS_C008351" FromRole="MATRICULA" ToRole="SECCION" />
+  </EntityType>
+  <EntityType Name="SECCION">
+    <Key>
+      <PropertyRef Name="IDSECCION" />
+    </Key>
+    <Property Name="IDSECCION" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CURSO" Relationship="Self.SYS_C008344" FromRole="SECCION" ToRole="CURSO" />
+    <NavigationProperty Name="MATRICULA" Relationship="Self.SYS_C008351" FromRole="SECCION" ToRole="MATRICULA" />
+    <NavigationProperty Name="VACANTES" Relationship="Self.SYS_C008347" FromRole="SECCION" ToRole="VACANTES" />
+  </EntityType>
+  <EntityType Name="VACANTES">
+    <Key>
+      <PropertyRef Name="IDVACANTES" />
+    </Key>
+    <Property Name="IDVACANTES" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDCURSO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="IDSECCION" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CURSO" Relationship="Self.SYS_C008346" FromRole="VACANTES" ToRole="CURSO" />
+    <NavigationProperty Name="SECCION" Relationship="Self.SYS_C008347" FromRole="VACANTES" ToRole="SECCION" />
+  </EntityType>
+  <Association Name="SYS_C008349">
+    <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="0..1" />
+    <End Role="MATRICULA" Type="Self.MATRICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ALUMNO">
+        <PropertyRef Name="IDALUMNO" />
+      </Principal>
+      <Dependent Role="MATRICULA">
+        <PropertyRef Name="IDALUMNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C008344">
+    <End Role="SECCION" Type="Self.SECCION" Multiplicity="0..1" />
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SECCION">
+        <PropertyRef Name="IDSECCION" />
+      </Principal>
+      <Dependent Role="CURSO">
+        <PropertyRef Name="IDSECCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C008346">
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="0..1" />
+    <End Role="VACANTES" Type="Self.VACANTES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSO">
+        <PropertyRef Name="IDCURSO" />
+      </Principal>
+      <Dependent Role="VACANTES">
+        <PropertyRef Name="IDCURSO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C008350">
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="0..1" />
+    <End Role="MATRICULA" Type="Self.MATRICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSO">
+        <PropertyRef Name="IDCURSO" />
+      </Principal>
+      <Dependent Role="MATRICULA">
+        <PropertyRef Name="IDCURSO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C008351">
+    <End Role="SECCION" Type="Self.SECCION" Multiplicity="0..1" />
+    <End Role="MATRICULA" Type="Self.MATRICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SECCION">
+        <PropertyRef Name="IDSECCION" />
+      </Principal>
+      <Dependent Role="MATRICULA">
+        <PropertyRef Name="IDSECCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C008347">
+    <End Role="SECCION" Type="Self.SECCION" Multiplicity="0..1" />
+    <End Role="VACANTES" Type="Self.VACANTES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SECCION">
+        <PropertyRef Name="IDSECCION" />
+      </Principal>
+      <Dependent Role="VACANTES">
+        <PropertyRef Name="IDSECCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" />
+    <EntitySet Name="CURSO" EntityType="Self.CURSO" />
+    <EntitySet Name="MATRICULA" EntityType="Self.MATRICULA" />
+    <EntitySet Name="SECCION" EntityType="Self.SECCION" />
+    <EntitySet Name="VACANTES" EntityType="Self.VACANTES" />
+    <AssociationSet Name="SYS_C008349" Association="Self.SYS_C008349">
+      <End Role="ALUMNO" EntitySet="ALUMNO" />
+      <End Role="MATRICULA" EntitySet="MATRICULA" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C008344" Association="Self.SYS_C008344">
+      <End Role="SECCION" EntitySet="SECCION" />
+      <End Role="CURSO" EntitySet="CURSO" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C008346" Association="Self.SYS_C008346">
+      <End Role="CURSO" EntitySet="CURSO" />
+      <End Role="VACANTES" EntitySet="VACANTES" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C008350" Association="Self.SYS_C008350">
+      <End Role="CURSO" EntitySet="CURSO" />
+      <End Role="MATRICULA" EntitySet="MATRICULA" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C008351" Association="Self.SYS_C008351">
+      <End Role="SECCION" EntitySet="SECCION" />
+      <End Role="MATRICULA" EntitySet="MATRICULA" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C008347" Association="Self.SYS_C008347">
+      <End Role="SECCION" EntitySet="SECCION" />
+      <End Role="VACANTES" EntitySet="VACANTES" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

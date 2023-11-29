@@ -1,0 +1,13 @@
+C:\Users\Em\Desktop\SOL_EMELYN_CALERO\MatriculaWeb.BLL\bin\Debug\MatriculaWeb.BLL.dll.config
+C:\Users\Em\Desktop\SOL_EMELYN_CALERO\MatriculaWeb.BLL\bin\Debug\MatriculaWeb.BLL.dll
+C:\Users\Em\Desktop\SOL_EMELYN_CALERO\MatriculaWeb.BLL\bin\Debug\MatriculaWeb.BLL.pdb
+C:\Users\Em\Desktop\SOL_EMELYN_CALERO\MatriculaWeb.BLL\bin\Debug\EntityFramework.dll
+C:\Users\Em\Desktop\SOL_EMELYN_CALERO\MatriculaWeb.BLL\bin\Debug\MatriculaWeb.DALC.dll
+C:\Users\Em\Desktop\SOL_EMELYN_CALERO\MatriculaWeb.BLL\bin\Debug\MatriculaWeb.DALC.pdb
+C:\Users\Em\Desktop\SOL_EMELYN_CALERO\MatriculaWeb.BLL\bin\Debug\MatriculaWeb.DALC.dll.config
+C:\Users\Em\Desktop\SOL_EMELYN_CALERO\MatriculaWeb.BLL\bin\Debug\EntityFramework.xml
+C:\Users\Em\Desktop\SOL_EMELYN_CALERO\MatriculaWeb.BLL\obj\Debug\MatriculaWeb.BLL.csproj.AssemblyReference.cache
+C:\Users\Em\Desktop\SOL_EMELYN_CALERO\MatriculaWeb.BLL\obj\Debug\MatriculaWeb.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Em\Desktop\SOL_EMELYN_CALERO\MatriculaWeb.BLL\obj\Debug\MatriculaWeb.BLL.csproj.CopyComplete
+C:\Users\Em\Desktop\SOL_EMELYN_CALERO\MatriculaWeb.BLL\obj\Debug\MatriculaWeb.BLL.dll
+C:\Users\Em\Desktop\SOL_EMELYN_CALERO\MatriculaWeb.BLL\obj\Debug\MatriculaWeb.BLL.pdb
